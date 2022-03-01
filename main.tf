@@ -4,6 +4,7 @@ resource "aws_lb" "frontend" {
   load_balancer_type         = "application"
   enable_deletion_protection = false
   subnets                    = data.terraform_remote_state.vpc.outputs.PUBLIC_SUBNETS_ID
+  security_groups            = []
   tags = {
     Name = "frontend-${var.ENV}"
     env  = var.ENV
