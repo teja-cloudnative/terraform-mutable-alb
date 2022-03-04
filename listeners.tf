@@ -13,34 +13,3 @@ resource "aws_lb_listener" "backend" {
     }
   }
 }
-
-resource "random_integer" "priority" {
-  min = 1
-  max = 500
-  keepers = {
-    # Generate a new integer each time we switch to a new listener ARN
-    listener_arn = data.terraform_remote_state.
-  }
-}
-
-resource "aws_lb_listener_rule" "static" {
-  listener_arn = aws_lb_listener.front_end.arn
-  priority     = 100
-
-  action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.static.arn
-  }
-
-  condition {
-    path_pattern {
-      values = ["/static/*"]
-    }
-  }
-
-  condition {
-    host_header {
-      values = ["example.com"]
-    }
-  }
-}

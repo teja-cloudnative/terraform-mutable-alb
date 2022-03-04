@@ -6,6 +6,6 @@ output "backend-arn" {
   value = aws_lb.backend.arn
 }
 
-output "backend-listener-arn" {
+output "backend_listener_arn" {
   value = aws_lb_listener.backend.arn
 }
