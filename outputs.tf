@@ -1,8 +1,8 @@
-output "frontend-arn" {
+output "frontend_arn" {
   value = aws_lb.frontend.arn
 }
 
-output "backend-arn" {
+output "backend_arn" {
   value = aws_lb.backend.arn
 }
 
